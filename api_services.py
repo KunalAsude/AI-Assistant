@@ -3,14 +3,14 @@ External API services for the voice assistant
 """
 import requests
 import json
-import openai
 from typing import Dict, List, Any, Optional, Tuple
 import config
+from llm_service import LlamaService
 
 class APIServices:
     def __init__(self):
         """Initialize API services"""
-        openai.api_key = config.OPENAI_API_KEY
+        self.llm = LlamaService()
         self.weather_api_key = config.WEATHER_API_KEY
         self.news_api_key = config.NEWS_API_KEY
         
@@ -113,7 +113,7 @@ class APIServices:
     
     def ask_chatgpt(self, query: str) -> Tuple[bool, str]:
         """
-        Ask a question to ChatGPT
+        Ask a question to Llama 3 (using Together AI)
         
         Args:
             query: The question to ask
@@ -121,21 +121,17 @@ class APIServices:
         Returns:
             Tuple[bool, str]: Success status and answer or error message
         """
-        if not config.OPENAI_API_KEY:
-            return False, "OpenAI API key not configured"
+        if not config.TOGETHER_API_KEY:
+            return False, "Together AI API key not configured"
         
         try:
-            response = openai.ChatCompletion.create(
-                model=config.CHAT_MODEL,
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant providing concise answers."},
-                    {"role": "user", "content": query}
-                ],
-                max_tokens=config.MAX_TOKENS,
-                temperature=0.7
-            )
+            # Use our LlamaService to get a response
+            answer = self.llm.get_response(query)
             
-            answer = response.choices[0].message.content.strip()
+            # Ensure the answer isn't too long for speech
+            if len(answer) > 500:
+                answer = answer[:497] + "..."
+                
             return True, answer
         except Exception as e:
-            return False, f"Error with ChatGPT: {str(e)}"
+            return False, f"Error with Llama 3: {str(e)}"

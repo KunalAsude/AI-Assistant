@@ -32,29 +32,49 @@ class SpeechEngine:
         """Adjust the speaking rate (default is 200)"""
         self.engine.setProperty('rate', rate)
 
-    def listen(self, timeout: int = 5) -> Tuple[bool, str]:
+    def listen(self, timeout: int = 8, retries: int = 1) -> Tuple[bool, str]:
         """
         Listen for user input and convert speech to text
         Returns (success, text) tuple
+        
+        Args:
+            timeout: How long to wait for a command (seconds)
+            retries: Number of times to retry if recognition fails
         """
-        with sr.Microphone() as source:
-            print("Listening...")
-            self.recognizer.adjust_for_ambient_noise(source)
-            try:
-                audio = self.recognizer.listen(source, timeout=timeout)
-                print("Recognizing...")
-                text = self.recognizer.recognize_google(audio, language=config.LANGUAGE)
-                print(f"User said: {text}")
-                return True, text.lower()
-            except sr.WaitTimeoutError:
-                return False, "Timeout"
-            except sr.UnknownValueError:
-                return False, "Could not understand audio"
-            except sr.RequestError:
-                return False, "Could not request results; check your network connection"
-            except Exception as e:
-                print(f"Error in speech recognition: {e}")
-                return False, f"Error: {str(e)}"
+        for attempt in range(retries + 1):
+            with sr.Microphone() as source:
+                print("Listening...")
+                # More extensive ambient noise adjustment
+                self.recognizer.adjust_for_ambient_noise(source, duration=1.0)
+                # Lower energy threshold to make it more sensitive
+                self.recognizer.energy_threshold = 300  # Default is usually 300-500
+                try:
+                    audio = self.recognizer.listen(source, timeout=timeout)
+                    print("Recognizing...")
+                    # Try Google first, with both language options
+                    try:
+                        text = self.recognizer.recognize_google(audio, language=config.LANGUAGE)
+                    except:
+                        # Fallback to English if regional language fails
+                        text = self.recognizer.recognize_google(audio, language="en-US")
+                        
+                    print(f"User said: {text}")
+                    return True, text.lower()
+                except sr.WaitTimeoutError:
+                    if attempt < retries:
+                        print("Timeout, retrying...")
+                        continue
+                    return False, "Timeout"
+                except sr.UnknownValueError:
+                    if attempt < retries:
+                        print("Could not understand, retrying...")
+                        continue
+                    return False, "Could not understand audio"
+                except sr.RequestError:
+                    return False, "Could not request results; check your network connection"
+                except Exception as e:
+                    print(f"Error in speech recognition: {e}")
+                    return False, f"Error: {str(e)}"
 
     def listen_for_wake_word(self) -> bool:
         """Listen specifically for the wake word"""

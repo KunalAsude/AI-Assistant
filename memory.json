@@ -1,0 +1,112 @@
+{
+    "user_preferences": {},
+    "conversations": [
+        {
+            "query": "play song on youtube punjabi",
+            "response": "Failed to get response from ChatGPT",
+            "timestamp": "1746851756.1194382"
+        },
+        {
+            "query": "play ranjha ve from youtube",
+            "response": "Failed to get response from ChatGPT",
+            "timestamp": "1746851775.1733317"
+        },
+        {
+            "query": "the match is tomorrow",
+            "response": "Failed to get response from ChatGPT",
+            "timestamp": "1746851844.5129063"
+        },
+        {
+            "query": "virat kohli",
+            "response": "Failed to get response from ChatGPT",
+            "timestamp": "1746851897.1489494"
+        },
+        {
+            "query": "can you access ",
+            "response": "\"Anything You Can Do (I Can Do Better)\" is a show tune composed by Irving Berlin for the 1946 Broadway musical Annie Get Your Gun. The song is a duet, with one male singer and one female singer attempting to outdo each other in increasingly complex tasks.",
+            "timestamp": "1746936711.2913988"
+        },
+        {
+            "query": "can you open vs code",
+            "response": "Failed to get response from ChatGPT",
+            "timestamp": "1746937088.0316098"
+        },
+        {
+            "query": "github",
+            "response": "I encountered an error: module 'together' has no attribute 'Chat'",
+            "timestamp": "1746937108.8501303"
+        },
+        {
+            "query": "can you give me current news",
+            "response": "Error: Your API key is invalid or incorrect. Check your key, or go to https://newsapi.org to create a free API key.",
+            "timestamp": "1746937663.491149"
+        },
+        {
+            "query": "open github desktop",
+            "response": "I encountered an error: module 'together' has no attribute 'Chat'",
+            "timestamp": "1746937693.2000594"
+        },
+        {
+            "query": "open google.com",
+            "response": "Opened Google",
+            "timestamp": "1746937854.2326615"
+        },
+        {
+            "query": "can you open github.com",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938202.4976914"
+        },
+        {
+            "query": "cricbuzz.com",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938224.1707008"
+        },
+        {
+            "query": "fix yourself",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938258.3152268"
+        },
+        {
+            "query": "open vs code",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938275.0236518"
+        },
+        {
+            "query": "github.com",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938288.9048254"
+        },
+        {
+            "query": "open youtube",
+            "response": "Opened YouTube",
+            "timestamp": "1746938402.2993786"
+        },
+        {
+            "query": "open github",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938473.9951246"
+        },
+        {
+            "query": "is there any possibility of rain today",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1746938498.2283769"
+        },
+        {
+            "query": "what are the things you can help me with",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1747022659.2294893"
+        },
+        {
+            "query": "search for virat kohli's ",
+            "response": "Virat Kohli (born 5 November 1988) is an Indian international cricketer who plays Test and ODI cricket for the national team and is a former captain in all formats. He is a right-handed batsman and an occasional right arm medium pace bowler.",
+            "timestamp": "1747022678.3676927"
+        },
+        {
+            "query": "can you pull up starts",
+            "response": "I encountered an error: 'LlamaService' object has no attribute '_format_prompt_for_complete'",
+            "timestamp": "1747022708.33697"
+        }
+    ],
+    "contacts": {},
+    "custom_commands": {}
+}

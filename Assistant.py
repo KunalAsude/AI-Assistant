@@ -352,7 +352,7 @@ class VoiceAssistant:
             self.reminders.stop()
             sys.exit()
         
-        # If none of the specific commands matched, use ChatGPT
+        # If none of the specific commands matched, use Llama 3
         else:
             self.speech.speak("Let me think about that...")
             success, answer = self.apis.ask_chatgpt(query)
@@ -361,7 +361,7 @@ class VoiceAssistant:
                 response = answer
             else:
                 self.speech.speak("I'm sorry, I couldn't find an answer to that.")
-                response = "Failed to get response from ChatGPT"
+                response = "Failed to get response from Llama 3"
         
         # Store conversation in memory
         if query and response:
